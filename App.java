@@ -30,6 +30,19 @@ while(true){
 
           break;
       case 2:
+      System.out.print("Enter account number: ");
+      String an=in.next();
+      for(int i=0;i<sb.size();i++){
+        Account b=sb.get(i);
+        if(an.equals(b.acno)){
+            System.out.println("---------------------------------------");
+            System.out.println("Account Holder:"+b.name+"\nAccount number: "+b.acno+"\nAccount balance: "+b.acbal);
+        }
+        else
+            System.out.println("Account number: "+an+" is invalid ");
+      }
+      if(sb.isEmpty())
+        System.out.println("create an account first!");
           break;
       case 3:
           break;
