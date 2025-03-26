@@ -115,7 +115,7 @@ while(true){
       case 4:
           System.out.print("Enter account number: ");
          an=in.next();
-         System.out.print("Enter withdrawalamount: ");
+         System.out.print("Enter depositamount: ");
          amt=in.nextInt();
          deposit(an,amt,sb);
           break;
