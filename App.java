@@ -20,11 +20,16 @@ public class App{
         }
         return false;
     }
-    static void balance(String an,ArrayList<Account> sb){
+    static void balance(String an,HashMap<String,Account> sb){
         if(sb.isEmpty())
         System.out.println("create an account first!");
-        int found=0;
-      for(Account b:sb){
+        else{ 
+        System.out.println("---------------------------------------");   
+        sb.get(an);
+        System.out.println("---------------------------------------");
+        }
+        //int found=0;
+      /*for(Account b:sb){
         if(an.equals(b.acno)){
             found=1;
             System.out.println("---------------------------------------");
@@ -35,7 +40,7 @@ public class App{
       if(found==0)
         {
             System.out.println("Account number: "+an+" is invalid ");
-        }
+        }*/
     }
     
     static void withdraw(String an,int amt,ArrayList<Account> sb){
@@ -95,7 +100,7 @@ String an;
 int amt;
 System.out.println("Bank management system");
 System.out.print("___________________________________");
-ArrayList<Account> sb=new ArrayList<Account>();
+HashMap<String,Account> sb=new HashMap<String,Account>();
 while(true){
     System.out.println("\nOpertaions:\n 1.create Account \n 2.view balance \n 3.withdraw amount \n 4.deposit amount \n 5.exit");
     System.out.print("Enter your choise: ");
@@ -106,12 +111,12 @@ while(true){
         String name=in.next();
         System.out.print("Enter account number: ");
         String ac=in.next();
-        if(isalreadyexists(ac,sb)){
+        if(sb.containsKey(ac)){
             System.out.println("Account number not available!");
         }
         else{
         Account a=new Account(name,ac);
-        sb.add(a);
+        sb.put(ac,a);
         }
         //System.out.print();
         break;
