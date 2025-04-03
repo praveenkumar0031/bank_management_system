@@ -20,78 +20,43 @@ public class App{
         }
         return false;
     }
-    static void balance(String an,HashMap<String,Account> sb){
-        if(sb.isEmpty())
-        System.out.println("create an account first!");
-        else{ 
+    static void balance(Account b){
+        
         System.out.println("---------------------------------------");   
-        sb.get(an);
+        System.out.println("Account Holder: "+b.name+"\nAccount number: "+b.acno+"\nAccount balance: "+b.acbal);
         System.out.println("---------------------------------------");
         }
-        //int found=0;
-      /*for(Account b:sb){
-        if(an.equals(b.acno)){
-            found=1;
-            System.out.println("---------------------------------------");
-            System.out.println("Account Holder:"+b.name+"\nAccount number: "+b.acno+"\nAccount balance: "+b.acbal);
-            System.out.println("---------------------------------------");
-        }
-      }
-      if(found==0)
-        {
-            System.out.println("Account number: "+an+" is invalid ");
-        }*/
-    }
+        
     
-    static void withdraw(String an,int amt,ArrayList<Account> sb){
-        int found=0;
+    
+    static void withdraw(Account a,int amt){
     if(amt>0){
-      for(Account b:sb){
-        if(an.equals(b.acno)){
-            if(b.acbal>=amt){
+            if(a.acbal>=amt){
+            a.acbal-=amt;
             System.out.println("Amount withdrawed successfully!");
-            found=1;
-            b.acbal-=amt;
             System.out.println("---------------------------------------");
-            System.out.println("Account Holder:"+b.name+"\nAccount number: "+b.acno+"\nAccount balance: "+b.acbal);
+            System.out.println("Account Holder:"+a.name+"\nAccount number: "+a.acno+"\nAccount balance: "+a.acbal);
             System.out.println("---------------------------------------");
             }
             else{
-                System.out.println("Amount withdrawal failed!(insufficient Balance : "+b.acbal+") ");
-                found=1;
-                }
-            }
-          }
-      if(found==0)
-        {
-            System.out.println("Amount withdrawal failed! Account number: "+an+" is not exist ");
-        }
+                System.out.println("Amount withdrawal failed!(insufficient Balance : "+a.acbal+") ");
+                
+                }          
     }
     else{
-        System.out.println("Amount withdrawal failed! "+amt+" is not valid amount");
+        System.out.println("Amount withdrawal failed! "+amt+" is not a valid amount");
     }
     }
-    static void deposit(String an,int amt,ArrayList<Account> sb){
-        int found=0;
+    static void deposit(Account d,int amt){
     if(amt>0){
-      for(Account b:sb){
-        if(an.equals(b.acno)){
-            
+            d.acbal+=amt;
             System.out.println("Amount Deposited successfully!");
-            found=1;
-            b.acbal+=amt;
             System.out.println("---------------------------------------");
-            System.out.println("Account Holder:"+b.name+"\nAccount number: "+b.acno+"\nAccount balance: "+b.acbal);
+            System.out.println("Account Holder:"+d.name+"\nAccount number: "+d.acno+"\nAccount balance: "+d.acbal);
+            System.out.println("---------------------------------------");
         }
-      }
-      if(found==0)
-        {
-            System.out.println("Amount Deposit failed!");
-            System.out.println("Account number: "+an+" is invalid ");
-        }
-    }
     else{
-        System.out.println("Amount withdrawal failed! "+amt+" is not valid amount");
+        System.out.println("Amount withdrawal failed! "+amt+" is not a valid amount");
     }
     }
 public static void main(String[] args){
@@ -123,21 +88,40 @@ while(true){
       case 2:
           System.out.print("Enter account number: ");
        an=in.next();
-        balance(an,sb);
-          break;
+       if(!sb.containsKey(an)){
+        System.out.println("Account not available!");
+        }
+        else{
+       Account b=sb.get(an);
+       balance(b);
+        }
+        break;
       case 3:
           System.out.print("Enter account number: ");
          an=in.next();
          System.out.print("Enter withdrawalamount: ");
          amt=in.nextInt();
-          withdraw(an,amt,sb);
+         
+         if(!sb.containsKey(an)){
+            System.out.println("Account not available!");
+          }
+         else{
+         Account wa=sb.get(an);
+          withdraw(wa,amt);
+         }
           break;
       case 4:
           System.out.print("Enter account number: ");
          an=in.next();
          System.out.print("Enter depositamount: ");
          amt=in.nextInt();
-         deposit(an,amt,sb);
+         if(!sb.containsKey(an)){
+            System.out.println("Account not available!");
+          }
+         else{
+            Account da=sb.get(an);
+            deposit(da,amt);
+         }
           break;
       case 5:
           System.out.println("exiting ....");
@@ -146,6 +130,7 @@ while(true){
           break;
       default:
           System.out.print("Invalid choise");
+
       }
     }
   }
