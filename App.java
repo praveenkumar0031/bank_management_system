@@ -1,17 +1,8 @@
 import java.util.*;
-class Account{
-    String name;
-    String acno;
-    int acbal=0;
-    Account(String n,String no){
-        this.name=n;
-        this.acno=no;
-        System.out.println("--------------------\nAccount created !\n-------------------- \nAccount holder: "+n+"\nAccount number: "+no+"\nAccount balance: "+acbal);
-    }
+import BankBackend.*;
 
-}
 public class App{
-    static boolean isalreadyexists(String an,ArrayList<Account> sb){
+    /*static boolean isalreadyexists(String an,ArrayList<Account> sb){
         if(sb.isEmpty())
             return false;
         for(Account b:sb){
@@ -56,11 +47,12 @@ public class App{
             System.out.println("---------------------------------------");
         }
     else{
+        //throw new InvalidException("Amount is not a valid amount");
         System.out.println("Amount withdrawal failed! "+amt+" is not a valid amount");
     }
-    }
+    }*/
 public static void main(String[] args){
-Scanner in=new Scanner(System.in);
+/*Scanner in = new Scanner(System.in);
 String an;
 int amt;
 System.out.println("Bank management system");
@@ -121,6 +113,7 @@ while(true){
          else{
             Account da=sb.get(an);
             deposit(da,amt);
+            
          }
           break;
       case 5:
@@ -133,5 +126,7 @@ while(true){
 
       }
     }
+    */
+    Account obj=new Account("praveen","SAVINGS",100,23);
   }
 }
