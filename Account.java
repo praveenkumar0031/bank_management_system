@@ -1,18 +1,20 @@
 
-
+import BankBackend.*;
 class Account{
+    Backend db=new Backend();
     String acholder="";
     long acno;
     String actype="";
     String acstatus="CLOSED";
     float acbal=0;
-    Account(String acholder,String actype,float acbal,int freeno){
+    Account(int s_no,String acholder,String actype,float acbal,int freeno){
         if(isValidAccount(acholder,actype)){
         this.acholder=acholder.toUpperCase();
         this.actype=actype.toUpperCase();
         this.acbal=acbal;
         this.acno=generateAcNO(freeno);
         this.acstatus="ACTIVE";
+        db.insertValues(s_no, acno, this.acholder, this.acbal, this.acstatus, this.actype);
         System.out.println("--------------------|Account created |-------------------- \n");
         }
     }
@@ -35,5 +37,7 @@ class Account{
     private static long generateAcNO(int lastno){
         return (832000070000l+lastno);
     }
-
+    public void demo(){
+        System.out.print("Run...");
+    }
 }

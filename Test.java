@@ -10,7 +10,7 @@ public class Test {
         System.out.println("Amt :");
         Float amt=in.nextFloat();
         int freeno=23;
-        Account a=new Account(name, type, amt, freeno);
+        Account a=new Account(2,name, type, amt, freeno);
         System.out.print("Name: "+a.acholder+"\nACC NO: "+a.acno+"\nACC sattus: "+a.acstatus+"\nACC BALANCE: "+a.acbal+"\nACC TYPE: "+a.actype);
     }
 }

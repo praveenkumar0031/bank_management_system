@@ -127,6 +127,7 @@ while(true){
       }
     }
     */
-    Account obj=new Account("praveen","SAVINGS",100,23);
+    Account obj=new Account(2,"naveen","FD",1000,24);
+    obj.demo();
   }
 }
