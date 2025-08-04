@@ -1,83 +1,51 @@
 import java.util.*;
-import BankBackend.*;
+//import BankBackend.*;
 
 public class App{
-    /*static boolean isalreadyexists(String an,ArrayList<Account> sb){
-        if(sb.isEmpty())
-            return false;
-        for(Account b:sb){
-            if(an.equals(b.acno))
-                return true;
-        }
-        return false;
-    }
-    static void balance(Account b){
-        
-        System.out.println("---------------------------------------");   
-        System.out.println("Account Holder: "+b.name+"\nAccount number: "+b.acno+"\nAccount balance: "+b.acbal);
-        System.out.println("---------------------------------------");
-        }
-        
+    static Scanner in = new Scanner(System.in);
+public static int  choiseMsg(){
     
-    
-    static void withdraw(Account a,int amt){
-    if(amt>0){
-            if(a.acbal>=amt){
-            a.acbal-=amt;
-            System.out.println("Amount withdrawed successfully!");
-            System.out.println("---------------------------------------");
-            System.out.println("Account Holder:"+a.name+"\nAccount number: "+a.acno+"\nAccount balance: "+a.acbal);
-            System.out.println("---------------------------------------");
-            }
-            else{
-                System.out.println("Amount withdrawal failed!(insufficient Balance : "+a.acbal+") ");
-                
-                }          
-    }
-    else{
-        System.out.println("Amount withdrawal failed! "+amt+" is not a valid amount");
-    }
-    }
-    static void deposit(Account d,int amt){
-    if(amt>0){
-            d.acbal+=amt;
-            System.out.println("Amount Deposited successfully!");
-            System.out.println("---------------------------------------");
-            System.out.println("Account Holder:"+d.name+"\nAccount number: "+d.acno+"\nAccount balance: "+d.acbal);
-            System.out.println("---------------------------------------");
-        }
-    else{
-        //throw new InvalidException("Amount is not a valid amount");
-        System.out.println("Amount withdrawal failed! "+amt+" is not a valid amount");
-    }
-    }*/
-public static void main(String[] args){
-/*Scanner in = new Scanner(System.in);
-String an;
-int amt;
-System.out.println("Bank management system");
-System.out.print("___________________________________");
-HashMap<String,Account> sb=new HashMap<String,Account>();
-while(true){
-    System.out.println("\nOpertaions:\n 1.create Account \n 2.view balance \n 3.withdraw amount \n 4.deposit amount \n 5.exit");
-    System.out.print("Enter your choise: ");
+    System.out.println("\nEnter your choise: ");
+    System.out.println(" 1.create Account \n" + 
+                " 2.View Balance \n" + 
+                " 3.Withdraw Amount \n" + 
+                " 4.Deposit Amount \n" + 
+                " 5.Money Transfer \n"+
+                " 6.Quit");
+    System.out.print(" ");
     int ch=in.nextInt();
+    return ch;
+}
+public static void main(String[] args){
+
+    //ac.demo();
+    //ac.removeAccount(832000070025L);
+String an;
+Float amt;
+System.out.println("Bank management system");
+System.out.println("___________________________________");
+while(true){
+    int ch=choiseMsg();
     switch(ch){
       case 1:
-        System.out.print("Enter account holder name: ");
-        String name=in.next();
-        System.out.print("Enter account number: ");
-        String ac=in.next();
-        if(sb.containsKey(ac)){
-            System.out.println("Account number not available!");
-        }
-        else{
-        Account a=new Account(name,ac);
-        sb.put(ac,a);
-        }
+        System.out.print("  Enter account holder name: ");
+        in.nextLine();
+        String name=in.nextLine();
+        //System.out.print("  Enter account number: ");
+        //Long ac=in.nextLong();
+        
+        System.out.println();
+        System.out.print("  Enter account Type(SAVINGS/CURRENT/FD/RD): ");
+        String type=in.next();
+        System.out.print("  Enter Initial Deposit amount(rs): ");
+        amt=in.nextFloat();
+        int no=(int)(Math.random() * 9000) + 1000;
+        Account ac=new Account(name,type,amt,no);
+        System.out.print("Account Number: "+ac.acno);
+        
         //System.out.print();
         break;
-      case 2:
+      /*case 2:
           System.out.print("Enter account number: ");
        an=in.next();
        if(!sb.containsKey(an)){
@@ -116,7 +84,8 @@ while(true){
             
          }
           break;
-      case 5:
+        */
+      case 6:
           System.out.println("exiting ....");
           System.out.println("Thanks for using");
           System.exit(0);
@@ -126,8 +95,7 @@ while(true){
 
       }
     }
-    */
-    Account obj=new Account(2,"naveen","FD",1000,24);
-    obj.demo();
+    
+    
   }
 }
