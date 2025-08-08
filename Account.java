@@ -99,7 +99,7 @@ class Account {
         }
     }
     public void adminFunc(){
-        db.fetchDB();
+        db.fetchDB()
     }
     public void TransferMoney(long sac_no, long rac_no, float amt) {
         if (db.containsAccount(sac_no)) {
