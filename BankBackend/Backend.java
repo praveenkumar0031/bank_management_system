@@ -241,7 +241,34 @@ public class Backend {
             System.out.print(e);
         }
     }
+    public void fetchDB() {
+        try {
+            String fetch_query = "SELECT * FROM bank;";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(fetch_query);
+            System.out.println("Fetching DataBase.......");
+            System.out.println("Sno\t Account no\t Type\t \t Status \tName\t\t Amount(RS)");
+            int n=1;
+            while(rs.next()) {
+                // System.out.println("Account No: "+rs.getLong("ACCOUNT_NO")+"\nAccount Holder:
+                // "+rs.getString("ACCOUNT_HOLDER")+"\nAccount Balance:
+                // "+rs.getFloat("BALANCE")+"\nAccount Type:
+                // "+rs.getString("ACCOUNT_TYPE")+"\nAccount Status:
+                // "+rs.getString("ACCOUNT_STATUS"));
 
+                System.out.println(n+"\t " + rs.getLong("ACCOUNT_NO") + "\t "
+                        + rs.getString("ACCOUNT_TYPE")+"\t \t"+rs.getString("ACCOUNT_STATUS")+"\t"
+                        + rs.getString("ACCOUNT_HOLDER") + "\t\t " + rs.getFloat("BALANCE")
+                        );
+                        n++;
+            } 
+            // return new
+
+        } catch (Exception e) {
+            System.out.print(e);
+            // return "ERROR";
+        }
+    }
     public static void main(String[] args) {
 
     }

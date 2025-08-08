@@ -4,7 +4,7 @@ import java.util.*;
 public class App {
   static Scanner in = new Scanner(System.in);
 
-  public static int choiseMsg() {
+  public static char choiseMsg() {
 
     System.out.println("\nEnter your choise: ");
     System.out.println(" 1.create Account \n" +
@@ -15,7 +15,7 @@ public class App {
         " 6.De-activate\n" +
         " 7.Quit");
     System.out.print(" ");
-    int ch = in.nextInt();
+    char ch = in.next().charAt(0);
     return ch;
   }
 
@@ -35,6 +35,11 @@ public class App {
     ac.TransferMoney(s_acno, r_acno, amt);
 
   }
+    static boolean iscrtPass(String p){
+      if(p.equals("admin01"))
+        return true;
+      return false;
+    }
 
   public static void main(String[] args) {
 
@@ -46,9 +51,9 @@ public class App {
     System.out.println("Bank management system");
     System.out.println("___________________________________");
     while (true) {
-      int ch = choiseMsg();
+      char ch = choiseMsg();
       switch (ch) {
-        case 1:
+        case '1':
           System.out.print("  Enter account holder name: ");
           in.nextLine();
           String name = in.nextLine();
@@ -66,13 +71,13 @@ public class App {
 
           // System.out.print();
           break;
-        case 2:
+        case '2':
           acno = getAccountNo();
 
           ac.Viewbalance(acno);
 
           break;
-        case 3:
+        case '3':
           acno = getAccountNo();
 
           System.out.print("Enter withdrawal Amount: Rs.");
@@ -80,24 +85,33 @@ public class App {
           ac.withdrawMoney(acno, amt);
 
           break;
-        case 4:
+        case '4':
           acno = getAccountNo();
           System.out.print("Enter deposit Amount: Rs.");
           amt = in.nextFloat();
           ac.depositMoney(acno, amt);
           break;
-        case 5:
+        case '5':
           fundTransfer(ac);
           break;
-        case 6:
+        case '6':
           System.out.println("Deactivation of Account");
           acno = getAccountNo();
           ac.DeactivateAccount(acno);
           break;
-        case 7:
+        case '7':
           System.out.println("exiting ....");
           System.out.println("Thanks for using");
           System.exit(0);
+          break;
+        case '#':
+          String admin="[mode:Admin] :";
+          System.out.println("\n"+admin);
+          System.out.print("Enter admin password: ");
+          String pwd=in.next();
+          if(iscrtPass(pwd)){
+            ac.adminFunc();
+          }
           break;
         default:
           System.out.print("Invalid choise");

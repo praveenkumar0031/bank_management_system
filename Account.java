@@ -98,7 +98,9 @@ class Account {
             System.out.println("Account not available!");
         }
     }
-
+    public void adminFunc(){
+        db.fetchDB();
+    }
     public void TransferMoney(long sac_no, long rac_no, float amt) {
         if (db.containsAccount(sac_no)) {
             System.out.println("Sender Account Verified...");
